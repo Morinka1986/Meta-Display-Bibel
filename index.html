@@ -11,18 +11,12 @@
 <meta name="theme-color" content="#02040a">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  background: #02040a;
-}
-
-body {
+html, body {
   margin: 0;
   background: #02040a;
-  color: #ffffff;
+  color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   min-height: 100vh;
 }
@@ -57,7 +51,7 @@ header p {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0,1fr));
   gap: 8px;
 }
 
@@ -66,8 +60,7 @@ header p {
   border: 2px solid #364258;
   border-radius: 12px;
   background: #111827;
-  color: #ffffff;
-  text-decoration: none;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,154 +71,88 @@ header p {
   font: inherit;
   width: 100%;
   outline: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .tile strong {
-  display: block;
   font-size: 20px;
-  line-height: 1.05;
 }
 
 .tile small {
-  display: block;
   margin-top: 5px;
   font-size: 13px;
-  line-height: 1.05;
   color: #eef3fb;
 }
 
 .tile:hover,
 .tile:focus,
 .tile.focused {
-  border-color: #ffffff;
-  box-shadow:
-    0 0 0 3px #02040a,
-    0 0 0 6px #ffffff;
+  border-color: #fff;
+  box-shadow: 0 0 0 3px #02040a, 0 0 0 6px #fff;
   transform: scale(1.025);
 }
 
-.number {
-  min-height: 64px;
-}
-
-.number strong {
-  font-size: 23px;
-}
+.number { min-height:64px; }
+.number strong { font-size:23px; }
 
 .back {
-  grid-column: 1 / -1;
-  min-height: 58px;
-  background: #182235;
-  border-color: #6f809d;
-  flex-direction: row;
-  font-weight: 800;
-  font-size: 17px;
+  grid-column:1/-1;
+  min-height:58px;
+  background:#182235;
+  border-color:#6f809d;
+  flex-direction:row;
+  font-weight:800;
+  font-size:17px;
 }
 
 .status {
-  grid-column: 1 / -1;
-  padding: 22px 10px;
-  text-align: center;
-  font-size: 17px;
-  color: #d9e2f0;
+  grid-column:1/-1;
+  padding:22px 10px;
+  text-align:center;
+  color:#d9e2f0;
 }
 
-.error {
-  color: #ffd2d2;
+.error { color:#ffd2d2; }
+
+.reader-wrap {
+  margin-top: 10px;
+  width: 100%;
+  height: calc(100vh - 155px);
+  min-height: 400px;
+  border: 2px solid #526783;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
 }
 
-/* Farbcodierung */
-
-.moses {
-  background: #15345f;
-  border-color: #3679c7;
+.reader {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #fff;
 }
 
-.history {
-  background: #49351a;
-  border-color: #a97835;
-}
+.moses {background:#15345f;border-color:#3679c7;}
+.history {background:#49351a;border-color:#a97835;}
+.wisdom {background:#493d13;border-color:#b39a32;}
+.major {background:#482147;border-color:#a54ca3;}
+.minor {background:#40272a;border-color:#9b565d;}
+.gospel {background:#154934;border-color:#36a878;}
+.acts {background:#16424a;border-color:#39a1b2;}
+.paul {background:#30305c;border-color:#7070c8;}
+.general {background:#3e3158;border-color:#8e6ec1;}
+.revelation {background:#562a20;border-color:#c0644b;}
+.chapter {background:#152033;border-color:#526783;}
+.verse {background:#102a25;border-color:#3b927c;}
 
-.wisdom {
-  background: #493d13;
-  border-color: #b39a32;
-}
-
-.major {
-  background: #482147;
-  border-color: #a54ca3;
-}
-
-.minor {
-  background: #40272a;
-  border-color: #9b565d;
-}
-
-.gospel {
-  background: #154934;
-  border-color: #36a878;
-}
-
-.acts {
-  background: #16424a;
-  border-color: #39a1b2;
-}
-
-.paul {
-  background: #30305c;
-  border-color: #7070c8;
-}
-
-.general {
-  background: #3e3158;
-  border-color: #8e6ec1;
-}
-
-.revelation {
-  background: #562a20;
-  border-color: #c0644b;
-}
-
-.chapter {
-  background: #152033;
-  border-color: #526783;
-}
-
-.verse {
-  background: #102a25;
-  border-color: #3b927c;
-}
-
-@media (max-width: 500px) {
-  #app {
-    padding: 8px;
-  }
-
-  .grid {
-    gap: 6px;
-  }
-
-  .tile {
-    min-height: 68px;
-    border-radius: 10px;
-  }
-
-  .tile strong {
-    font-size: 18px;
-  }
-
-  .tile small {
-    font-size: 11px;
-  }
-
-  .number {
-    min-height: 58px;
-  }
-
-  .number strong {
-    font-size: 21px;
-  }
+@media(max-width:500px) {
+  #app {padding:8px;}
+  .grid {gap:6px;}
+  .tile {min-height:68px;border-radius:10px;}
+  .tile strong {font-size:18px;}
+  .tile small {font-size:11px;}
+  .number {min-height:58px;}
+  .number strong {font-size:21px;}
 }
 </style>
 </head>
@@ -233,475 +160,455 @@ header p {
 <body>
 
 <header>
-  <h1 id="title">📖 Lutherbibel 1984</h1>
-  <p id="subtitle">Buch auswählen</p>
+<h1 id="title">📖 Lutherbibel 1984</h1>
+<p id="subtitle">Buch auswählen</p>
 </header>
 
 <main id="app"></main>
 
 <script>
-/*
-  Meta Display Bibel
-  Navigation:
-  Bücher → Kapitel → Verse → Biblia / Luther 1984
-
-  WICHTIG:
-  Die LU84-Texte werden NICHT in dieser Datei gespeichert.
-  Der ausgewählte Vers öffnet die lizenzierte LU84 bei Biblia.
-*/
 
 const books = [
+{abbr:"Gen",name:"Genesis",chapters:50,group:"moses",biblia:"Genesis",corpus:"genesis"},
+{abbr:"Ex",name:"Exodus",chapters:40,group:"moses",biblia:"Exodus",corpus:"exodus"},
+{abbr:"Lev",name:"Levitikus",chapters:27,group:"moses",biblia:"Leviticus",corpus:"leviticus"},
+{abbr:"Num",name:"Numeri",chapters:36,group:"moses",biblia:"Numbers",corpus:"numbers"},
+{abbr:"Dtn",name:"Deuteronomium",chapters:34,group:"moses",biblia:"Deuteronomy",corpus:"deuteronomy"},
 
-  // 5 Bücher Mose
-  {abbr:"Gen", name:"Genesis", chapters:50, group:"moses", biblia:"genesis", corpus:"genesis"},
-  {abbr:"Ex", name:"Exodus", chapters:40, group:"moses", biblia:"exodus", corpus:"exodus"},
-  {abbr:"Lev", name:"Levitikus", chapters:27, group:"moses", biblia:"leviticus", corpus:"leviticus"},
-  {abbr:"Num", name:"Numeri", chapters:36, group:"moses", biblia:"numbers", corpus:"numbers"},
-  {abbr:"Dtn", name:"Deuteronomium", chapters:34, group:"moses", biblia:"deuteronomy", corpus:"deuteronomy"},
+{abbr:"Jos",name:"Josua",chapters:24,group:"history",biblia:"Joshua",corpus:"joshua"},
+{abbr:"Ri",name:"Richter",chapters:21,group:"history",biblia:"Judges",corpus:"judges"},
+{abbr:"Rut",name:"Rut",chapters:4,group:"history",biblia:"Ruth",corpus:"ruth"},
+{abbr:"1 Sam",name:"1. Samuel",chapters:31,group:"history",biblia:"1 Samuel",corpus:"i-samuel"},
+{abbr:"2 Sam",name:"2. Samuel",chapters:24,group:"history",biblia:"2 Samuel",corpus:"ii-samuel"},
+{abbr:"1 Kön",name:"1. Könige",chapters:22,group:"history",biblia:"1 Kings",corpus:"i-kings"},
+{abbr:"2 Kön",name:"2. Könige",chapters:25,group:"history",biblia:"2 Kings",corpus:"ii-kings"},
+{abbr:"1 Chr",name:"1. Chronik",chapters:29,group:"history",biblia:"1 Chronicles",corpus:"i-chronicles"},
+{abbr:"2 Chr",name:"2. Chronik",chapters:36,group:"history",biblia:"2 Chronicles",corpus:"ii-chronicles"},
+{abbr:"Esra",name:"Esra",chapters:10,group:"history",biblia:"Ezra",corpus:"ezra"},
+{abbr:"Neh",name:"Nehemia",chapters:13,group:"history",biblia:"Nehemiah",corpus:"nehemiah"},
+{abbr:"Est",name:"Ester",chapters:10,group:"history",biblia:"Esther",corpus:"esther"},
 
-  // Geschichtsbücher
-  {abbr:"Jos", name:"Josua", chapters:24, group:"history", biblia:"joshua", corpus:"joshua"},
-  {abbr:"Ri", name:"Richter", chapters:21, group:"history", biblia:"judges", corpus:"judges"},
-  {abbr:"Rut", name:"Rut", chapters:4, group:"history", biblia:"ruth", corpus:"ruth"},
-  {abbr:"1 Sam", name:"1. Samuel", chapters:31, group:"history", biblia:"1-samuel", corpus:"i-samuel"},
-  {abbr:"2 Sam", name:"2. Samuel", chapters:24, group:"history", biblia:"2-samuel", corpus:"ii-samuel"},
-  {abbr:"1 Kön", name:"1. Könige", chapters:22, group:"history", biblia:"1-kings", corpus:"i-kings"},
-  {abbr:"2 Kön", name:"2. Könige", chapters:25, group:"history", biblia:"2-kings", corpus:"ii-kings"},
-  {abbr:"1 Chr", name:"1. Chronik", chapters:29, group:"history", biblia:"1-chronicles", corpus:"i-chronicles"},
-  {abbr:"2 Chr", name:"2. Chronik", chapters:36, group:"history", biblia:"2-chronicles", corpus:"ii-chronicles"},
-  {abbr:"Esra", name:"Esra", chapters:10, group:"history", biblia:"ezra", corpus:"ezra"},
-  {abbr:"Neh", name:"Nehemia", chapters:13, group:"history", biblia:"nehemiah", corpus:"nehemiah"},
-  {abbr:"Est", name:"Ester", chapters:10, group:"history", biblia:"esther", corpus:"esther"},
+{abbr:"Hi",name:"Hiob",chapters:42,group:"wisdom",biblia:"Job",corpus:"job"},
+{abbr:"Ps",name:"Psalmen",chapters:150,group:"wisdom",biblia:"Psalms",corpus:"psalms"},
+{abbr:"Spr",name:"Sprüche",chapters:31,group:"wisdom",biblia:"Proverbs",corpus:"proverbs"},
+{abbr:"Pred",name:"Prediger",chapters:12,group:"wisdom",biblia:"Ecclesiastes",corpus:"ecclesiastes"},
+{abbr:"Hld",name:"Hoheslied",chapters:8,group:"wisdom",biblia:"Song of Solomon",corpus:"song-of-solomon"},
 
-  // Weisheitsbücher
-  {abbr:"Hi", name:"Hiob", chapters:42, group:"wisdom", biblia:"job", corpus:"job"},
-  {abbr:"Ps", name:"Psalmen", chapters:150, group:"wisdom", biblia:"psalms", corpus:"psalms"},
-  {abbr:"Spr", name:"Sprüche", chapters:31, group:"wisdom", biblia:"proverbs", corpus:"proverbs"},
-  {abbr:"Pred", name:"Prediger", chapters:12, group:"wisdom", biblia:"ecclesiastes", corpus:"ecclesiastes"},
-  {abbr:"Hld", name:"Hoheslied", chapters:8, group:"wisdom", biblia:"song-of-solomon", corpus:"song-of-solomon"},
+{abbr:"Jes",name:"Jesaja",chapters:66,group:"major",biblia:"Isaiah",corpus:"isaiah"},
+{abbr:"Jer",name:"Jeremia",chapters:52,group:"major",biblia:"Jeremiah",corpus:"jeremiah"},
+{abbr:"Klgl",name:"Klagelieder",chapters:5,group:"major",biblia:"Lamentations",corpus:"lamentations"},
+{abbr:"Hes",name:"Hesekiel",chapters:48,group:"major",biblia:"Ezekiel",corpus:"ezekiel"},
+{abbr:"Dan",name:"Daniel",chapters:12,group:"major",biblia:"Daniel",corpus:"daniel"},
 
-  // Große Propheten
-  {abbr:"Jes", name:"Jesaja", chapters:66, group:"major", biblia:"isaiah", corpus:"isaiah"},
-  {abbr:"Jer", name:"Jeremia", chapters:52, group:"major", biblia:"jeremiah", corpus:"jeremiah"},
-  {abbr:"Klgl", name:"Klagelieder", chapters:5, group:"major", biblia:"lamentations", corpus:"lamentations"},
-  {abbr:"Hes", name:"Hesekiel", chapters:48, group:"major", biblia:"ezekiel", corpus:"ezekiel"},
-  {abbr:"Dan", name:"Daniel", chapters:12, group:"major", biblia:"daniel", corpus:"daniel"},
+{abbr:"Hos",name:"Hosea",chapters:14,group:"minor",biblia:"Hosea",corpus:"hosea"},
+{abbr:"Joel",name:"Joel",chapters:4,group:"minor",biblia:"Joel",corpus:"joel"},
+{abbr:"Am",name:"Amos",chapters:9,group:"minor",biblia:"Amos",corpus:"amos"},
+{abbr:"Ob",name:"Obadja",chapters:1,group:"minor",biblia:"Obadiah",corpus:"obadiah"},
+{abbr:"Jona",name:"Jona",chapters:4,group:"minor",biblia:"Jonah",corpus:"jonah"},
+{abbr:"Mi",name:"Micha",chapters:7,group:"minor",biblia:"Micah",corpus:"micah"},
+{abbr:"Nah",name:"Nahum",chapters:3,group:"minor",biblia:"Nahum",corpus:"nahum"},
+{abbr:"Hab",name:"Habakuk",chapters:3,group:"minor",biblia:"Habakkuk",corpus:"habakkuk"},
+{abbr:"Zef",name:"Zefanja",chapters:3,group:"minor",biblia:"Zephaniah",corpus:"zephaniah"},
+{abbr:"Hag",name:"Haggai",chapters:2,group:"minor",biblia:"Haggai",corpus:"haggai"},
+{abbr:"Sach",name:"Sacharja",chapters:14,group:"minor",biblia:"Zechariah",corpus:"zechariah"},
+{abbr:"Mal",name:"Maleachi",chapters:3,group:"minor",biblia:"Malachi",corpus:"malachi"},
 
-  // Kleine Propheten
-  {abbr:"Hos", name:"Hosea", chapters:14, group:"minor", biblia:"hosea", corpus:"hosea"},
-  {abbr:"Joel", name:"Joel", chapters:4, group:"minor", biblia:"joel", corpus:"joel"},
-  {abbr:"Am", name:"Amos", chapters:9, group:"minor", biblia:"amos", corpus:"amos"},
-  {abbr:"Ob", name:"Obadja", chapters:1, group:"minor", biblia:"obadiah", corpus:"obadiah"},
-  {abbr:"Jona", name:"Jona", chapters:4, group:"minor", biblia:"jonah", corpus:"jonah"},
-  {abbr:"Mi", name:"Micha", chapters:7, group:"minor", biblia:"micah", corpus:"micah"},
-  {abbr:"Nah", name:"Nahum", chapters:3, group:"minor", biblia:"nahum", corpus:"nahum"},
-  {abbr:"Hab", name:"Habakuk", chapters:3, group:"minor", biblia:"habakkuk", corpus:"habakkuk"},
-  {abbr:"Zef", name:"Zefanja", chapters:3, group:"minor", biblia:"zephaniah", corpus:"zephaniah"},
-  {abbr:"Hag", name:"Haggai", chapters:2, group:"minor", biblia:"haggai", corpus:"haggai"},
-  {abbr:"Sach", name:"Sacharja", chapters:14, group:"minor", biblia:"zechariah", corpus:"zechariah"},
-  {abbr:"Mal", name:"Maleachi", chapters:3, group:"minor", biblia:"malachi", corpus:"malachi"},
+{abbr:"Mt",name:"Matthäus",chapters:28,group:"gospel",biblia:"Matthew",corpus:"matthew"},
+{abbr:"Mk",name:"Markus",chapters:16,group:"gospel",biblia:"Mark",corpus:"mark"},
+{abbr:"Lk",name:"Lukas",chapters:24,group:"gospel",biblia:"Luke",corpus:"luke"},
+{abbr:"Joh",name:"Johannes",chapters:21,group:"gospel",biblia:"John",corpus:"john"},
 
-  // Evangelien
-  {abbr:"Mt", name:"Matthäus", chapters:28, group:"gospel", biblia:"matthew", corpus:"matthew"},
-  {abbr:"Mk", name:"Markus", chapters:16, group:"gospel", biblia:"mark", corpus:"mark"},
-  {abbr:"Lk", name:"Lukas", chapters:24, group:"gospel", biblia:"luke", corpus:"luke"},
-  {abbr:"Joh", name:"Johannes", chapters:21, group:"gospel", biblia:"john", corpus:"john"},
+{abbr:"Apg",name:"Apostelgeschichte",chapters:28,group:"acts",biblia:"Acts",corpus:"acts"},
 
-  // Apostelgeschichte
-  {abbr:"Apg", name:"Apostelgeschichte", chapters:28, group:"acts", biblia:"acts", corpus:"acts"},
+{abbr:"Röm",name:"Römer",chapters:16,group:"paul",biblia:"Romans",corpus:"romans"},
+{abbr:"1 Kor",name:"1. Korinther",chapters:16,group:"paul",biblia:"1 Corinthians",corpus:"i-corinthians"},
+{abbr:"2 Kor",name:"2. Korinther",chapters:13,group:"paul",biblia:"2 Corinthians",corpus:"ii-corinthians"},
+{abbr:"Gal",name:"Galater",chapters:6,group:"paul",biblia:"Galatians",corpus:"galatians"},
+{abbr:"Eph",name:"Epheser",chapters:6,group:"paul",biblia:"Ephesians",corpus:"ephesians"},
+{abbr:"Phil",name:"Philipper",chapters:4,group:"paul",biblia:"Philippians",corpus:"philippians"},
+{abbr:"Kol",name:"Kolosser",chapters:4,group:"paul",biblia:"Colossians",corpus:"colossians"},
+{abbr:"1 Thess",name:"1. Thessalonicher",chapters:5,group:"paul",biblia:"1 Thessalonians",corpus:"i-thessalonians"},
+{abbr:"2 Thess",name:"2. Thessalonicher",chapters:3,group:"paul",biblia:"2 Thessalonians",corpus:"ii-thessalonians"},
+{abbr:"1 Tim",name:"1. Timotheus",chapters:6,group:"paul",biblia:"1 Timothy",corpus:"i-timothy"},
+{abbr:"2 Tim",name:"2. Timotheus",chapters:4,group:"paul",biblia:"2 Timothy",corpus:"ii-timothy"},
+{abbr:"Tit",name:"Titus",chapters:3,group:"paul",biblia:"Titus",corpus:"titus"},
+{abbr:"Phlm",name:"Philemon",chapters:1,group:"paul",biblia:"Philemon",corpus:"philemon"},
 
-  // Paulusbriefe
-  {abbr:"Röm", name:"Römer", chapters:16, group:"paul", biblia:"romans", corpus:"romans"},
-  {abbr:"1 Kor", name:"1. Korinther", chapters:16, group:"paul", biblia:"1-corinthians", corpus:"i-corinthians"},
-  {abbr:"2 Kor", name:"2. Korinther", chapters:13, group:"paul", biblia:"2-corinthians", corpus:"ii-corinthians"},
-  {abbr:"Gal", name:"Galater", chapters:6, group:"paul", biblia:"galatians", corpus:"galatians"},
-  {abbr:"Eph", name:"Epheser", chapters:6, group:"paul", biblia:"ephesians", corpus:"ephesians"},
-  {abbr:"Phil", name:"Philipper", chapters:4, group:"paul", biblia:"philippians", corpus:"philippians"},
-  {abbr:"Kol", name:"Kolosser", chapters:4, group:"paul", biblia:"colossians", corpus:"colossians"},
-  {abbr:"1 Thess", name:"1. Thessalonicher", chapters:5, group:"paul", biblia:"1-thessalonians", corpus:"i-thessalonians"},
-  {abbr:"2 Thess", name:"2. Thessalonicher", chapters:3, group:"paul", biblia:"2-thessalonians", corpus:"ii-thessalonians"},
-  {abbr:"1 Tim", name:"1. Timotheus", chapters:6, group:"paul", biblia:"1-timothy", corpus:"i-timothy"},
-  {abbr:"2 Tim", name:"2. Timotheus", chapters:4, group:"paul", biblia:"2-timothy", corpus:"ii-timothy"},
-  {abbr:"Tit", name:"Titus", chapters:3, group:"paul", biblia:"titus", corpus:"titus"},
-  {abbr:"Phlm", name:"Philemon", chapters:1, group:"paul", biblia:"philemon", corpus:"philemon"},
+{abbr:"Hebr",name:"Hebräer",chapters:13,group:"general",biblia:"Hebrews",corpus:"hebrews"},
+{abbr:"Jak",name:"Jakobus",chapters:5,group:"general",biblia:"James",corpus:"james"},
+{abbr:"1 Petr",name:"1. Petrus",chapters:5,group:"general",biblia:"1 Peter",corpus:"i-peter"},
+{abbr:"2 Petr",name:"2. Petrus",chapters:3,group:"general",biblia:"2 Peter",corpus:"ii-peter"},
+{abbr:"1 Joh",name:"1. Johannes",chapters:5,group:"general",biblia:"1 John",corpus:"i-john"},
+{abbr:"2 Joh",name:"2. Johannes",chapters:1,group:"general",biblia:"2 John",corpus:"ii-john"},
+{abbr:"3 Joh",name:"3. Johannes",chapters:1,group:"general",biblia:"3 John",corpus:"iii-john"},
+{abbr:"Jud",name:"Judas",chapters:1,group:"general",biblia:"Jude",corpus:"jude"},
 
-  // Allgemeine Briefe
-  {abbr:"Hebr", name:"Hebräer", chapters:13, group:"general", biblia:"hebrews", corpus:"hebrews"},
-  {abbr:"Jak", name:"Jakobus", chapters:5, group:"general", biblia:"james", corpus:"james"},
-  {abbr:"1 Petr", name:"1. Petrus", chapters:5, group:"general", biblia:"1-peter", corpus:"i-peter"},
-  {abbr:"2 Petr", name:"2. Petrus", chapters:3, group:"general", biblia:"2-peter", corpus:"ii-peter"},
-  {abbr:"1 Joh", name:"1. Johannes", chapters:5, group:"general", biblia:"1-john", corpus:"i-john"},
-  {abbr:"2 Joh", name:"2. Johannes", chapters:1, group:"general", biblia:"2-john", corpus:"ii-john"},
-  {abbr:"3 Joh", name:"3. Johannes", chapters:1, group:"general", biblia:"3-john", corpus:"iii-john"},
-  {abbr:"Jud", name:"Judas", chapters:1, group:"general", biblia:"jude", corpus:"jude"},
-
-  // Offenbarung
-  {abbr:"Offb", name:"Offenbarung", chapters:22, group:"revelation", biblia:"revelation-of-john", corpus:"revelation-of-john"}
+{abbr:"Offb",name:"Offenbarung",chapters:22,group:"revelation",biblia:"Revelation",corpus:"revelation-of-john"}
 ];
 
-let selectedBook = null;
-let selectedChapter = null;
-let focusIndex = 0;
+let selectedBook=null;
+let selectedChapter=null;
+let focusIndex=0;
 
-/*
-  Einige besonders wichtige LU84-Verszahlen werden lokal fest
-  hinterlegt. Für alle anderen Kapitel wird die deutsche
-  Verszählung dynamisch geladen.
-*/
-const localCounts = {
-  "joel": {
-    1: 20,
-    2: 27,
-    3: 5,
-    4: 21
-  }
+const localCounts={
+  joel:{1:20,2:27,3:5,4:21}
 };
 
-/*
-  Cache, damit bereits geladene Kapitel nicht erneut geladen
-  werden müssen.
-*/
-const verseCache = {};
+const verseCache={};
 
-function setHeader(title, subtitle) {
-  document.getElementById("title").textContent = title;
-  document.getElementById("subtitle").textContent = subtitle;
+function setHeader(title,subtitle){
+  document.getElementById("title").textContent=title;
+  document.getElementById("subtitle").textContent=subtitle;
 }
 
-function makeButton(html, className, action) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "tile " + className;
-  button.innerHTML = html;
-  button.addEventListener("click", action);
-  return button;
+function makeButton(html,className,action){
+  const b=document.createElement("button");
+  b.type="button";
+  b.className="tile "+className;
+  b.innerHTML=html;
+  b.addEventListener("click",action);
+  return b;
 }
 
-function renderBooks() {
-  selectedBook = null;
-  selectedChapter = null;
+function renderBooks(){
+  selectedBook=null;
+  selectedChapter=null;
 
-  setHeader("📖 Lutherbibel 1984", "Buch auswählen");
+  setHeader("📖 Lutherbibel 1984","Buch auswählen");
 
-  const app = document.getElementById("app");
-  app.innerHTML = "";
+  const app=document.getElementById("app");
+  app.innerHTML="";
 
-  const grid = document.createElement("div");
-  grid.className = "grid";
+  const grid=document.createElement("div");
+  grid.className="grid";
 
-  books.forEach(book => {
-    const tile = makeButton(
-      "<strong>" + book.abbr + "</strong><small>" + book.name + "</small>",
-      book.group,
-      () => renderChapters(book)
+  books.forEach(book=>{
+    grid.appendChild(
+      makeButton(
+        "<strong>"+book.abbr+"</strong><small>"+book.name+"</small>",
+        book.group,
+        ()=>renderChapters(book)
+      )
     );
-
-    grid.appendChild(tile);
   });
 
   app.appendChild(grid);
   resetFocus();
 }
 
-function renderChapters(book) {
-  selectedBook = book;
-  selectedChapter = null;
+function renderChapters(book){
+  selectedBook=book;
+  selectedChapter=null;
 
-  setHeader(book.name, "Kapitel auswählen");
+  setHeader(book.name,"Kapitel auswählen");
 
-  const app = document.getElementById("app");
-  app.innerHTML = "";
+  const app=document.getElementById("app");
+  app.innerHTML="";
 
-  const grid = document.createElement("div");
-  grid.className = "grid";
+  const grid=document.createElement("div");
+  grid.className="grid";
 
-  const back = makeButton(
-    "← Bücher",
-    "back",
-    renderBooks
+  grid.appendChild(
+    makeButton("← Bücher","back",renderBooks)
   );
 
-  grid.appendChild(back);
-
-  for (let chapter = 1; chapter <= book.chapters; chapter++) {
-    const tile = makeButton(
-      "<strong>" + chapter + "</strong>",
-      "number chapter",
-      () => renderVerses(book, chapter)
+  for(let chapter=1;chapter<=book.chapters;chapter++){
+    grid.appendChild(
+      makeButton(
+        "<strong>"+chapter+"</strong>",
+        "number chapter",
+        ()=>renderVerses(book,chapter)
+      )
     );
-
-    grid.appendChild(tile);
   }
 
   app.appendChild(grid);
   resetFocus();
 }
 
-async function getVerseCount(book, chapter) {
+async function getVerseCount(book,chapter){
 
-  const cacheKey = book.corpus + "-" + chapter;
+  const key=book.corpus+"-"+chapter;
 
-  if (verseCache[cacheKey]) {
-    return verseCache[cacheKey];
+  if(verseCache[key]) return verseCache[key];
+
+  if(localCounts[book.corpus] && localCounts[book.corpus][chapter]){
+    verseCache[key]=localCounts[book.corpus][chapter];
+    return verseCache[key];
   }
 
-  if (
-    localCounts[book.corpus] &&
-    localCounts[book.corpus][chapter]
-  ) {
-    verseCache[cacheKey] = localCounts[book.corpus][chapter];
-    return verseCache[cacheKey];
-  }
-
-  /*
-    Nur Metadaten/Versanzahl werden verwendet.
-    Der Bibeltext selbst wird NICHT in unserer App angezeigt
-    oder gespeichert.
-  */
-  const url =
-    "https://cdn.jsdelivr.net/gh/sangchy1972/pd-text-corpus@main/" +
-    "bibles/de/books/" +
-    book.corpus +
-    "/chapters/" +
-    chapter +
+  const url=
+    "https://cdn.jsdelivr.net/gh/sangchy1972/pd-text-corpus@main/"+
+    "bibles/de/books/"+
+    book.corpus+
+    "/chapters/"+
+    chapter+
     ".json";
 
-  const response = await fetch(url, {
-    cache: "force-cache"
+  const response=await fetch(url,{cache:"force-cache"});
+
+  if(!response.ok){
+    throw new Error("Versanzahl konnte nicht geladen werden");
+  }
+
+  const data=await response.json();
+
+  if(!data.verses || !Array.isArray(data.verses)){
+    throw new Error("Keine Versdaten");
+  }
+
+  let maxVerse=0;
+
+  data.verses.forEach(item=>{
+    const n=parseInt(item.verse,10);
+    if(!isNaN(n) && n>maxVerse) maxVerse=n;
   });
 
-  if (!response.ok) {
-    throw new Error("Versanzahl konnte nicht geladen werden.");
-  }
+  if(maxVerse<1) throw new Error("Keine Verse gefunden");
 
-  const data = await response.json();
-
-  if (!data.verses || !Array.isArray(data.verses)) {
-    throw new Error("Ungültige Versdaten.");
-  }
-
-  /*
-    Nicht einfach data.verses.length verwenden:
-    Wir lesen die höchste tatsächliche Versnummer aus.
-  */
-  let maxVerse = 0;
-
-  data.verses.forEach(item => {
-    const number = parseInt(item.verse, 10);
-    if (!isNaN(number) && number > maxVerse) {
-      maxVerse = number;
-    }
-  });
-
-  if (maxVerse < 1) {
-    throw new Error("Keine Verse gefunden.");
-  }
-
-  verseCache[cacheKey] = maxVerse;
+  verseCache[key]=maxVerse;
   return maxVerse;
 }
 
-async function renderVerses(book, chapter) {
-  selectedBook = book;
-  selectedChapter = chapter;
+async function renderVerses(book,chapter){
 
-  setHeader(
-    book.name + " " + chapter,
-    "Vers auswählen"
+  selectedBook=book;
+  selectedChapter=chapter;
+
+  setHeader(book.name+" "+chapter,"Vers auswählen");
+
+  const app=document.getElementById("app");
+  app.innerHTML="";
+
+  const grid=document.createElement("div");
+  grid.className="grid";
+
+  grid.appendChild(
+    makeButton(
+      "← Kapitel",
+      "back",
+      ()=>renderChapters(book)
+    )
   );
 
-  const app = document.getElementById("app");
-  app.innerHTML = "";
+  const loading=document.createElement("div");
+  loading.className="status";
+  loading.textContent="Verse werden geladen …";
 
-  const grid = document.createElement("div");
-  grid.className = "grid";
-
-  const back = makeButton(
-    "← Kapitel",
-    "back",
-    () => renderChapters(book)
-  );
-
-  grid.appendChild(back);
-
-  const loading = document.createElement("div");
-  loading.className = "status";
-  loading.textContent = "Verse werden geladen …";
   grid.appendChild(loading);
-
   app.appendChild(grid);
-  resetFocus();
 
-  try {
-    const verseCount = await getVerseCount(book, chapter);
+  try{
 
+    const count=await getVerseCount(book,chapter);
     loading.remove();
 
-    for (let verse = 1; verse <= verseCount; verse++) {
+    for(let verse=1;verse<=count;verse++){
 
-      /*
-        Wir verwenden einen echten Link.
-        Dadurch kommt die Navigation direkt aus dem
-        Pinch/Klick des Benutzers und nicht aus
-        window.location oder window.open.
-      */
-
-      const startVerse = Math.max(1, verse - 2);
-      const endVerse = Math.min(verseCount, verse + 2);
-
-      const href =
-        "https://biblia.com/bible/lutbib1984/" +
-        book.biblia +
-        "/" +
-        chapter +
-        "/" +
-        startVerse +
-        "-" +
-        endVerse;
-
-      const link = document.createElement("a");
-
-      link.className = "tile number verse";
-      link.href = href;
-
-      /*
-        Absichtlich KEIN target="_blank".
-        Auf der Brille soll derselbe Browserkontext
-        benutzt werden.
-      */
-
-      link.innerHTML =
-        "<strong>" + verse + "</strong>";
-
-      link.setAttribute(
-        "aria-label",
-        book.name + " " + chapter + ", Vers " + verse
+      grid.appendChild(
+        makeButton(
+          "<strong>"+verse+"</strong>",
+          "number verse",
+          ()=>openReader(book,chapter,verse,count)
+        )
       );
 
-      grid.appendChild(link);
     }
 
     resetFocus();
 
-  } catch (error) {
+  }catch(error){
 
-    loading.className = "status error";
-    loading.innerHTML =
-      "Verszahlen konnten nicht geladen werden.<br>" +
+    loading.className="status error";
+    loading.innerHTML=
+      "Verszahlen konnten nicht geladen werden.<br>"+
       "Bitte Internetverbindung prüfen.";
 
     console.error(error);
-    resetFocus();
   }
 }
 
-/* ------------------------------
-   Tastatur / Neural-Band-Fokus
--------------------------------- */
+/* ==============================
+   LU84 READER INNERHALB DER APP
+================================ */
 
-function getFocusable() {
-  return Array.from(
-    document.querySelectorAll(".tile")
+function openReader(book,chapter,verse,verseCount){
+
+  selectedBook=book;
+  selectedChapter=chapter;
+
+  const start=Math.max(1,verse-2);
+  const end=Math.min(verseCount,verse+2);
+
+  setHeader(
+    book.name+" "+chapter+","+verse,
+    "Lutherbibel 1984"
   );
-}
 
-function getColumnCount() {
-  const grid = document.querySelector(".grid");
+  const app=document.getElementById("app");
+  app.innerHTML="";
 
-  if (!grid) return 5;
+  const grid=document.createElement("div");
+  grid.className="grid";
 
-  const style = window.getComputedStyle(grid);
-  const columns = style.gridTemplateColumns.split(" ");
+  grid.appendChild(
+    makeButton(
+      "← Verse",
+      "back",
+      ()=>renderVerses(book,chapter)
+    )
+  );
 
-  return Math.max(1, columns.length);
-}
+  app.appendChild(grid);
 
-function resetFocus() {
-  setTimeout(() => {
-    const items = getFocusable();
+  const wrap=document.createElement("div");
+  wrap.className="reader-wrap";
 
-    if (!items.length) return;
+  const frame=document.createElement("iframe");
+  frame.className="reader";
 
-    focusIndex = 0;
-    focusItem(focusIndex);
-  }, 30);
-}
+  /*
+    Offizieller Biblia Embedded Bible Reader.
+    LLS:1.0.591 = Lutherbibel 1984.
+  */
 
-function focusItem(index) {
-  const items = getFocusable();
+  const reference=
+    book.biblia+
+    " "+
+    chapter+
+    ":"+
+    start+
+    "-"+
+    end;
 
-  if (!items.length) return;
-
-  if (index < 0) index = 0;
-  if (index >= items.length) index = items.length - 1;
-
-  focusIndex = index;
-
-  items.forEach(item => {
-    item.classList.remove("focused");
+  const params=new URLSearchParams({
+    layout:"minimal",
+    resourceName:"LLS:1.0.591",
+    startingReference:reference,
+    navigationBox:"false",
+    resourcePicker:"false",
+    historyButtons:"false",
+    shareButton:"false",
+    textSizeButton:"false"
   });
 
-  const current = items[focusIndex];
+  frame.src=
+    "https://biblia.com/api/plugins/embeddedbible?"+
+    params.toString();
+
+  frame.title=
+    "Lutherbibel 1984 – "+
+    book.name+
+    " "+
+    chapter+
+    ","+
+    verse;
+
+  frame.setAttribute("loading","eager");
+
+  wrap.appendChild(frame);
+  app.appendChild(wrap);
+
+  resetFocus();
+}
+
+/* ==============================
+   NEURAL BAND / TASTEN
+================================ */
+
+function getFocusable(){
+  return Array.from(document.querySelectorAll(".tile"));
+}
+
+function getColumnCount(){
+
+  const grid=document.querySelector(".grid");
+
+  if(!grid) return 5;
+
+  const style=window.getComputedStyle(grid);
+  const columns=style.gridTemplateColumns.split(" ");
+
+  return Math.max(1,columns.length);
+}
+
+function resetFocus(){
+
+  setTimeout(()=>{
+
+    const items=getFocusable();
+    if(!items.length) return;
+
+    focusIndex=0;
+    focusItem(0);
+
+  },30);
+}
+
+function focusItem(index){
+
+  const items=getFocusable();
+  if(!items.length) return;
+
+  if(index<0) index=0;
+  if(index>=items.length) index=items.length-1;
+
+  focusIndex=index;
+
+  items.forEach(item=>item.classList.remove("focused"));
+
+  const current=items[index];
 
   current.classList.add("focused");
 
-  try {
-    current.focus({
-      preventScroll: true
-    });
-  } catch {
+  try{
+    current.focus({preventScroll:true});
+  }catch{
     current.focus();
   }
 
   current.scrollIntoView({
-    behavior: "smooth",
-    block: "center",
-    inline: "center"
+    behavior:"smooth",
+    block:"center",
+    inline:"center"
   });
 }
 
-function activateFocused() {
-  const items = getFocusable();
+function activateFocused(){
 
-  if (!items.length) return;
+  const items=getFocusable();
+  if(!items.length) return;
 
-  const item = items[focusIndex];
-
-  /*
-    Bei einem <a> löst click() den echten href aus.
-    Bei einem <button> wird die normale Auswahl ausgeführt.
-  */
-  item.click();
+  items[focusIndex].click();
 }
 
-document.addEventListener("keydown", event => {
+document.addEventListener("keydown",event=>{
 
-  const items = getFocusable();
+  const items=getFocusable();
+  if(!items.length) return;
 
-  if (!items.length) return;
+  const columns=getColumnCount();
 
-  const columns = getColumnCount();
-
-  switch (event.key) {
+  switch(event.key){
 
     case "ArrowRight":
       event.preventDefault();
-      focusItem(focusIndex + 1);
+      focusItem(focusIndex+1);
       break;
 
     case "ArrowLeft":
       event.preventDefault();
-      focusItem(focusIndex - 1);
+      focusItem(focusIndex-1);
       break;
 
     case "ArrowDown":
       event.preventDefault();
-      focusItem(focusIndex + columns);
+      focusItem(focusIndex+columns);
       break;
 
     case "ArrowUp":
       event.preventDefault();
-      focusItem(focusIndex - columns);
+      focusItem(focusIndex-columns);
       break;
 
     case "Enter":
@@ -712,14 +619,13 @@ document.addEventListener("keydown", event => {
 });
 
 /*
-  KEINE Escape-/Backspace-Steuerung.
-  KEINE Mittel-Finger-Geste.
-  Die Meta-Systemgesten bleiben unangetastet.
+  Keine Escape-/Backspace-Steuerung.
+  Keine Mittelfinger-Geste.
+  Meta-Systemgesten bleiben unangetastet.
 */
 
 renderBooks();
 
 </script>
-
 </body>
 </html>
