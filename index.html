@@ -7,65 +7,134 @@
 
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  background:#050505;
-  color:#fff;
-  font-family:Arial,sans-serif;
-  text-align:center;
+html,body{margin:0;background:#050505;color:#fff;font-family:Arial,sans-serif}
+body{min-height:100vh}
+.app{max-width:600px;margin:auto;padding:18px}
+header{text-align:center;margin-bottom:16px}
+h1{font-size:30px;margin:5px}
+.sub{color:#aaa;font-size:16px}
+
+.screen{display:none}
+.screen.active{display:block}
+
+.title{
+ font-size:25px;
+ font-weight:bold;
+ text-align:center;
+ margin:12px 0 16px
 }
-.app{
-  max-width:600px;
-  margin:auto;
-  padding:20px;
+
+.menuButton{
+ width:100%;
+ background:#171717;
+ color:#fff;
+ border:2px solid #444;
+ border-radius:18px;
+ padding:22px 14px;
+ margin:12px 0;
+ font-size:23px;
+ font-weight:bold;
+ text-align:left
 }
-h1{
-  font-size:32px;
-  margin:10px 0 4px;
+
+.menuButton:focus,.menuButton.selected{
+ background:#fff;
+ color:#000;
+ border-color:#fff;
+ outline:none
 }
-.sub{
-  color:#bbb;
-  margin-bottom:22px;
+
+.icon{font-size:30px;margin-right:10px}
+
+.hint{
+ text-align:center;
+ color:#aaa;
+ font-size:15px;
+ margin:15px 0;
+ line-height:1.4
 }
-.card{
-  background:#171717;
-  border:1px solid #333;
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:16px;
+
+.list{
+ max-height:440px;
+ overflow-y:auto;
+ scroll-behavior:smooth;
+ padding-bottom:30px
 }
-label{
-  display:block;
-  font-size:18px;
-  margin-bottom:8px;
+
+.item{
+ width:100%;
+ background:#171717;
+ color:#fff;
+ border:2px solid #333;
+ border-radius:16px;
+ padding:18px 12px;
+ margin:9px 0;
+ font-size:22px;
+ text-align:center;
+ font-weight:bold
 }
-select,input,button{
-  width:100%;
-  font-size:22px;
-  padding:15px;
-  border-radius:14px;
-  border:1px solid #555;
-  margin-bottom:15px;
+
+.item:focus,.item.selected{
+ background:#fff;
+ color:#000;
+ border-color:#fff;
+ outline:none;
+ transform:scale(1.02)
 }
-select,input{
-  background:#222;
-  color:white;
+
+.back{
+ width:100%;
+ padding:15px;
+ margin-bottom:12px;
+ border-radius:14px;
+ border:1px solid #555;
+ background:#222;
+ color:#fff;
+ font-size:19px
 }
-button{
-  background:white;
-  color:black;
-  font-weight:bold;
-  cursor:pointer;
+
+.voiceBox{
+ background:#171717;
+ border:1px solid #444;
+ border-radius:18px;
+ padding:16px
 }
+
+#voiceInput{
+ width:100%;
+ background:#222;
+ color:#fff;
+ border:2px solid #555;
+ border-radius:14px;
+ padding:18px 12px;
+ font-size:21px;
+ margin:12px 0
+}
+
+.primary{
+ width:100%;
+ border:0;
+ border-radius:15px;
+ padding:18px;
+ background:#fff;
+ color:#000;
+ font-size:21px;
+ font-weight:bold;
+ margin:7px 0
+}
+
+.error{
+ color:#ff9a9a;
+ text-align:center;
+ min-height:25px;
+ font-size:16px
+}
+
 .reference{
-  font-size:28px;
-  font-weight:bold;
-  margin:10px 0 20px;
-}
-.small{
-  color:#aaa;
-  font-size:14px;
-  line-height:1.4;
+ text-align:center;
+ font-size:30px;
+ font-weight:bold;
+ margin:25px 0
 }
 </style>
 </head>
@@ -73,153 +142,316 @@ button{
 <body>
 <div class="app">
 
+<header>
 <h1>📖 Bibel</h1>
 <div class="sub">Lutherbibel 1984</div>
+</header>
 
-<div class="card">
+<!-- START -->
+<section id="home" class="screen active">
+<div class="title">Wie möchtest du suchen?</div>
 
-<label for="book">Buch</label>
-<select id="book"></select>
+<button class="menuButton" onclick="showBooks()">
+<span class="icon">📚</span>Bibelstelle auswählen
+</button>
 
-<label for="chapter">Kapitel</label>
-<select id="chapter"></select>
+<button class="menuButton" onclick="showVoice()">
+<span class="icon">🎙️</span>Bibelstelle sprechen
+</button>
 
-<label for="verse">Vers</label>
-<input id="verse" type="number" min="1" value="1">
+<div class="hint">
+Mit Gesten scrollen und den gewünschten Eintrag bestätigen.
+</div>
+</section>
 
-<div class="reference" id="reference"></div>
+<!-- BÜCHER -->
+<section id="booksScreen" class="screen">
+<button class="back" onclick="showScreen('home')">← Zurück</button>
+<div class="title">📚 Buch auswählen</div>
+<div id="booksList" class="list"></div>
+</section>
 
-<button onclick="openBible()">Stelle öffnen</button>
+<!-- KAPITEL -->
+<section id="chaptersScreen" class="screen">
+<button class="back" onclick="showBooks()">← Bücher</button>
+<div id="chapterTitle" class="title">Kapitel auswählen</div>
+<div id="chaptersList" class="list"></div>
+</section>
 
+<!-- VERSE -->
+<section id="versesScreen" class="screen">
+<button class="back" onclick="showChapters()">← Kapitel</button>
+<div id="verseTitle" class="title">Vers auswählen</div>
+<div id="versesList" class="list"></div>
+</section>
+
+<!-- SPRACHE -->
+<section id="voiceScreen" class="screen">
+<button class="back" onclick="showScreen('home')">← Zurück</button>
+
+<div class="title">🎙️ Bibelstelle sprechen</div>
+
+<div class="voiceBox">
+<div class="hint">
+Tippe in das Feld und benutze die Diktierfunktion.<br>
+Zum Beispiel:<br><b>„1. Mose 3 Vers 15“</b>
 </div>
 
-<div class="small">
-Lutherbibel 1984 wird über die offizielle
-Online-Bibel der Deutschen Bibelgesellschaft geöffnet.
+<input
+ id="voiceInput"
+ type="text"
+ inputmode="text"
+ placeholder="z. B. Johannes 3 Vers 16"
+ autocomplete="off"
+>
+
+<button class="primary" onclick="parseReference()">
+Stelle öffnen
+</button>
+
+<div id="voiceError" class="error"></div>
 </div>
+</section>
+
+<!-- BESTÄTIGUNG -->
+<section id="resultScreen" class="screen">
+<button class="back" onclick="showScreen('home')">← Neue Suche</button>
+<div class="title">Ausgewählte Bibelstelle</div>
+<div id="finalReference" class="reference"></div>
+<button class="primary" onclick="openSelected()">📖 Lutherbibel 1984 öffnen</button>
+</section>
 
 </div>
 
 <script>
 const books=[
-["1. Mose","GEN",50],
-["2. Mose","EXO",40],
-["3. Mose","LEV",27],
-["4. Mose","NUM",36],
-["5. Mose","DEU",34],
-["Josua","JOS",24],
-["Richter","JDG",21],
-["Rut","RUT",4],
-["1. Samuel","1SA",31],
-["2. Samuel","2SA",24],
-["1. Könige","1KI",22],
-["2. Könige","2KI",25],
-["1. Chronik","1CH",29],
-["2. Chronik","2CH",36],
-["Esra","EZR",10],
-["Nehemia","NEH",13],
-["Ester","EST",10],
-["Hiob","JOB",42],
-["Psalmen","PSA",150],
-["Sprüche","PRO",31],
-["Prediger","ECC",12],
-["Hohelied","SNG",8],
-["Jesaja","ISA",66],
-["Jeremia","JER",52],
-["Klagelieder","LAM",5],
-["Hesekiel","EZK",48],
-["Daniel","DAN",12],
-["Hosea","HOS",14],
-["Joel","JOL",4],
-["Amos","AMO",9],
-["Obadja","OBA",1],
-["Jona","JON",4],
-["Micha","MIC",7],
-["Nahum","NAM",3],
-["Habakuk","HAB",3],
-["Zefanja","ZEP",3],
-["Haggai","HAG",2],
-["Sacharja","ZEC",14],
-["Maleachi","MAL",3],
+["1. Mose","GEN",50,["1 mose","1. mose","erste mose","erster mose","erstes buch mose"]],
+["2. Mose","EXO",40,["2 mose","2. mose","zweite mose","zweiter mose","zweites buch mose"]],
+["3. Mose","LEV",27,["3 mose","3. mose","dritte mose","dritter mose","drittes buch mose"]],
+["4. Mose","NUM",36,["4 mose","4. mose","vierte mose","vierter mose","viertes buch mose"]],
+["5. Mose","DEU",34,["5 mose","5. mose","fünfte mose","funfte mose","fünfter mose","funfter mose"]],
+["Josua","JOS",24,["josua"]],
+["Richter","JDG",21,["richter"]],
+["Rut","RUT",4,["rut","ruth"]],
+["1. Samuel","1SA",31,["1 samuel","erste samuel","erster samuel"]],
+["2. Samuel","2SA",24,["2 samuel","zweite samuel","zweiter samuel"]],
+["1. Könige","1KI",22,["1 könige","1 konige","erste könige","erster könige"]],
+["2. Könige","2KI",25,["2 könige","2 konige","zweite könige","zweiter könige"]],
+["1. Chronik","1CH",29,["1 chronik","erste chronik"]],
+["2. Chronik","2CH",36,["2 chronik","zweite chronik"]],
+["Esra","EZR",10,["esra"]],
+["Nehemia","NEH",13,["nehemia"]],
+["Ester","EST",10,["ester","esther"]],
+["Hiob","JOB",42,["hiob"]],
+["Psalmen","PSA",150,["psalm","psalmen"]],
+["Sprüche","PRO",31,["sprüche","spruche"]],
+["Prediger","ECC",12,["prediger"]],
+["Hohelied","SNG",8,["hohelied","hoheslied"]],
+["Jesaja","ISA",66,["jesaja"]],
+["Jeremia","JER",52,["jeremia"]],
+["Klagelieder","LAM",5,["klagelieder"]],
+["Hesekiel","EZK",48,["hesekiel"]],
+["Daniel","DAN",12,["daniel"]],
+["Hosea","HOS",14,["hosea"]],
+["Joel","JOL",4,["joel"]],
+["Amos","AMO",9,["amos"]],
+["Obadja","OBA",1,["obadja"]],
+["Jona","JON",4,["jona"]],
+["Micha","MIC",7,["micha"]],
+["Nahum","NAM",3,["nahum"]],
+["Habakuk","HAB",3,["habakuk"]],
+["Zefanja","ZEP",3,["zefanja"]],
+["Haggai","HAG",2,["haggai"]],
+["Sacharja","ZEC",14,["sacharja"]],
+["Maleachi","MAL",3,["maleachi"]],
 
-["Matthäus","MAT",28],
-["Markus","MRK",16],
-["Lukas","LUK",24],
-["Johannes","JHN",21],
-["Apostelgeschichte","ACT",28],
-["Römer","ROM",16],
-["1. Korinther","1CO",16],
-["2. Korinther","2CO",13],
-["Galater","GAL",6],
-["Epheser","EPH",6],
-["Philipper","PHP",4],
-["Kolosser","COL",4],
-["1. Thessalonicher","1TH",5],
-["2. Thessalonicher","2TH",3],
-["1. Timotheus","1TI",6],
-["2. Timotheus","2TI",4],
-["Titus","TIT",3],
-["Philemon","PHM",1],
-["Hebräer","HEB",13],
-["Jakobus","JAS",5],
-["1. Petrus","1PE",5],
-["2. Petrus","2PE",3],
-["1. Johannes","1JN",5],
-["2. Johannes","2JN",1],
-["3. Johannes","3JN",1],
-["Judas","JUD",1],
-["Offenbarung","REV",22]
+["Matthäus","MAT",28,["matthäus","matthaus"]],
+["Markus","MRK",16,["markus"]],
+["Lukas","LUK",24,["lukas"]],
+["Johannes","JHN",21,["johannes"]],
+["Apostelgeschichte","ACT",28,["apostelgeschichte"]],
+["Römer","ROM",16,["römer","romer"]],
+["1. Korinther","1CO",16,["1 korinther","erste korinther","erster korinther"]],
+["2. Korinther","2CO",13,["2 korinther","zweite korinther","zweiter korinther"]],
+["Galater","GAL",6,["galater"]],
+["Epheser","EPH",6,["epheser"]],
+["Philipper","PHP",4,["philipper"]],
+["Kolosser","COL",4,["kolosser"]],
+["1. Thessalonicher","1TH",5,["1 thessalonicher","erste thessalonicher"]],
+["2. Thessalonicher","2TH",3,["2 thessalonicher","zweite thessalonicher"]],
+["1. Timotheus","1TI",6,["1 timotheus","erste timotheus"]],
+["2. Timotheus","2TI",4,["2 timotheus","zweite timotheus"]],
+["Titus","TIT",3,["titus"]],
+["Philemon","PHM",1,["philemon"]],
+["Hebräer","HEB",13,["hebräer","hebraer"]],
+["Jakobus","JAS",5,["jakobus"]],
+["1. Petrus","1PE",5,["1 petrus","erste petrus","erster petrus"]],
+["2. Petrus","2PE",3,["2 petrus","zweite petrus","zweiter petrus"]],
+["1. Johannes","1JN",5,["1 johannes","erste johannes","erster johannes"]],
+["2. Johannes","2JN",1,["2 johannes","zweite johannes","zweiter johannes"]],
+["3. Johannes","3JN",1,["3 johannes","dritte johannes","dritter johannes"]],
+["Judas","JUD",1,["judas"]],
+["Offenbarung","REV",22,["offenbarung","offenbarung des johannes"]]
 ];
 
-const book=document.getElementById("book");
-const chapter=document.getElementById("chapter");
-const verse=document.getElementById("verse");
-const reference=document.getElementById("reference");
+let selectedBook=0;
+let selectedChapter=1;
+let selectedVerse=1;
 
-books.forEach((b,i)=>{
- const option=document.createElement("option");
- option.value=i;
- option.textContent=b[0];
- book.appendChild(option);
-});
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo(0,0);
+}
 
-function chapters(){
- chapter.innerHTML="";
- const max=books[book.value][2];
+function makeItem(text,action){
+ const b=document.createElement("button");
+ b.className="item";
+ b.textContent=text;
+ b.onclick=action;
+ return b;
+}
 
- for(let i=1;i<=max;i++){
-   const option=document.createElement("option");
-   option.value=i;
-   option.textContent=i;
-   chapter.appendChild(option);
+function showBooks(){
+ const list=document.getElementById("booksList");
+ list.innerHTML="";
+
+ books.forEach((b,i)=>{
+   list.appendChild(makeItem(b[0],()=>{
+     selectedBook=i;
+     selectedChapter=1;
+     selectedVerse=1;
+     showChapters();
+   }));
+ });
+
+ showScreen("booksScreen");
+}
+
+function showChapters(){
+ const b=books[selectedBook];
+ document.getElementById("chapterTitle").textContent=b[0]+" – Kapitel";
+
+ const list=document.getElementById("chaptersList");
+ list.innerHTML="";
+
+ for(let i=1;i<=b[2];i++){
+   const n=i;
+   list.appendChild(makeItem("Kapitel "+n,()=>{
+     selectedChapter=n;
+     selectedVerse=1;
+     showVerses();
+   }));
  }
- update();
+
+ showScreen("chaptersScreen");
 }
 
-function update(){
- const b=books[book.value];
- reference.textContent=
-   b[0]+" "+chapter.value+":"+verse.value;
+function showVerses(){
+ const b=books[selectedBook];
+ document.getElementById("verseTitle").textContent=
+   b[0]+" "+selectedChapter+" – Vers";
+
+ const list=document.getElementById("versesList");
+ list.innerHTML="";
+
+ /* Maximal 176 Verse. Ungültige höhere Verse werden
+    von der offiziellen Bibelseite nicht als Treffer angezeigt. */
+ for(let i=1;i<=176;i++){
+   const n=i;
+   list.appendChild(makeItem("Vers "+n,()=>{
+     selectedVerse=n;
+     showResult();
+   }));
+ }
+
+ showScreen("versesScreen");
 }
 
-function openBible(){
- const b=books[book.value];
- const c=chapter.value;
- const v=Math.max(1,parseInt(verse.value)||1);
+function showResult(){
+ document.getElementById("finalReference").textContent=
+   books[selectedBook][0]+" "+selectedChapter+":"+selectedVerse;
+ showScreen("resultScreen");
+}
 
- const url=
- "https://www.die-bibel.de/bibel/LU84/"
- +b[1]+"."+c+"."+v;
+function openSelected(){
+ const b=books[selectedBook];
+ const url="https://www.die-bibel.de/bibel/LU84/"
+   +b[1]+"."+selectedChapter+"."+selectedVerse;
 
  window.location.href=url;
 }
 
-book.addEventListener("change",chapters);
-chapter.addEventListener("change",update);
-verse.addEventListener("input",update);
+function normalize(t){
+ return t.toLowerCase()
+  .replace(/[.,:;]/g," ")
+  .replace(/\s+/g," ")
+  .trim();
+}
 
-chapters();
+function parseReference(){
+ const error=document.getElementById("voiceError");
+ error.textContent="";
+
+ let text=normalize(document.getElementById("voiceInput").value);
+
+ text=text
+  .replace(/\bkapitel\b/g," ")
+  .replace(/\bvers\b/g," ")
+  .replace(/\s+/g," ")
+  .trim();
+
+ let match=null;
+
+ for(let i=0;i<books.length;i++){
+   const aliases=[books[i][0].toLowerCase(),...books[i][3]]
+     .sort((a,b)=>b.length-a.length);
+
+   for(const alias of aliases){
+     if(text.startsWith(normalize(alias)+" ")){
+       match={index:i,alias:normalize(alias)};
+       break;
+     }
+   }
+   if(match)break;
+ }
+
+ if(!match){
+   error.textContent="Buch nicht erkannt. Beispiel: Johannes 3 Vers 16";
+   return;
+ }
+
+ const rest=text.slice(match.alias.length).trim();
+ const nums=rest.match(/\d+/g);
+
+ if(!nums || nums.length<2){
+   error.textContent="Bitte Kapitel und Vers angeben.";
+   return;
+ }
+
+ const chapter=parseInt(nums[0]);
+ const verse=parseInt(nums[1]);
+ const b=books[match.index];
+
+ if(chapter<1 || chapter>b[2]){
+   error.textContent="Dieses Kapitel gibt es in "+b[0]+" nicht.";
+   return;
+ }
+
+ if(verse<1){
+   error.textContent="Der Vers ist ungültig.";
+   return;
+ }
+
+ selectedBook=match.index;
+ selectedChapter=chapter;
+ selectedVerse=verse;
+ showResult();
+}
+
+document.getElementById("voiceInput").addEventListener("keydown",e=>{
+ if(e.key==="Enter")parseReference();
+});
 </script>
-
 </body>
 </html>
