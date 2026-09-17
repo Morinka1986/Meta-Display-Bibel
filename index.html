@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Meta Display Bibel</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#050505;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  text-align:center;
+}
+.app{
+  max-width:600px;
+  margin:auto;
+  padding:20px;
+}
+h1{
+  font-size:32px;
+  margin:10px 0 4px;
+}
+.sub{
+  color:#bbb;
+  margin-bottom:22px;
+}
+.card{
+  background:#171717;
+  border:1px solid #333;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:16px;
+}
+label{
+  display:block;
+  font-size:18px;
+  margin-bottom:8px;
+}
+select,input,button{
+  width:100%;
+  font-size:22px;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid #555;
+  margin-bottom:15px;
+}
+select,input{
+  background:#222;
+  color:white;
+}
+button{
+  background:white;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+.reference{
+  font-size:28px;
+  font-weight:bold;
+  margin:10px 0 20px;
+}
+.small{
+  color:#aaa;
+  font-size:14px;
+  line-height:1.4;
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<h1>📖 Bibel</h1>
+<div class="sub">Lutherbibel 1984</div>
+
+<div class="card">
+
+<label for="book">Buch</label>
+<select id="book"></select>
+
+<label for="chapter">Kapitel</label>
+<select id="chapter"></select>
+
+<label for="verse">Vers</label>
+<input id="verse" type="number" min="1" value="1">
+
+<div class="reference" id="reference"></div>
+
+<button onclick="openBible()">Stelle öffnen</button>
+
+</div>
+
+<div class="small">
+Lutherbibel 1984 wird über die offizielle
+Online-Bibel der Deutschen Bibelgesellschaft geöffnet.
+</div>
+
+</div>
+
+<script>
+const books=[
+["1. Mose","GEN",50],
+["2. Mose","EXO",40],
+["3. Mose","LEV",27],
+["4. Mose","NUM",36],
+["5. Mose","DEU",34],
+["Josua","JOS",24],
+["Richter","JDG",21],
+["Rut","RUT",4],
+["1. Samuel","1SA",31],
+["2. Samuel","2SA",24],
+["1. Könige","1KI",22],
+["2. Könige","2KI",25],
+["1. Chronik","1CH",29],
+["2. Chronik","2CH",36],
+["Esra","EZR",10],
+["Nehemia","NEH",13],
+["Ester","EST",10],
+["Hiob","JOB",42],
+["Psalmen","PSA",150],
+["Sprüche","PRO",31],
+["Prediger","ECC",12],
+["Hohelied","SNG",8],
+["Jesaja","ISA",66],
+["Jeremia","JER",52],
+["Klagelieder","LAM",5],
+["Hesekiel","EZK",48],
+["Daniel","DAN",12],
+["Hosea","HOS",14],
+["Joel","JOL",4],
+["Amos","AMO",9],
+["Obadja","OBA",1],
+["Jona","JON",4],
+["Micha","MIC",7],
+["Nahum","NAM",3],
+["Habakuk","HAB",3],
+["Zefanja","ZEP",3],
+["Haggai","HAG",2],
+["Sacharja","ZEC",14],
+["Maleachi","MAL",3],
+
+["Matthäus","MAT",28],
+["Markus","MRK",16],
+["Lukas","LUK",24],
+["Johannes","JHN",21],
+["Apostelgeschichte","ACT",28],
+["Römer","ROM",16],
+["1. Korinther","1CO",16],
+["2. Korinther","2CO",13],
+["Galater","GAL",6],
+["Epheser","EPH",6],
+["Philipper","PHP",4],
+["Kolosser","COL",4],
+["1. Thessalonicher","1TH",5],
+["2. Thessalonicher","2TH",3],
+["1. Timotheus","1TI",6],
+["2. Timotheus","2TI",4],
+["Titus","TIT",3],
+["Philemon","PHM",1],
+["Hebräer","HEB",13],
+["Jakobus","JAS",5],
+["1. Petrus","1PE",5],
+["2. Petrus","2PE",3],
+["1. Johannes","1JN",5],
+["2. Johannes","2JN",1],
+["3. Johannes","3JN",1],
+["Judas","JUD",1],
+["Offenbarung","REV",22]
+];
+
+const book=document.getElementById("book");
+const chapter=document.getElementById("chapter");
+const verse=document.getElementById("verse");
+const reference=document.getElementById("reference");
+
+books.forEach((b,i)=>{
+ const option=document.createElement("option");
+ option.value=i;
+ option.textContent=b[0];
+ book.appendChild(option);
+});
+
+function chapters(){
+ chapter.innerHTML="";
+ const max=books[book.value][2];
+
+ for(let i=1;i<=max;i++){
+   const option=document.createElement("option");
+   option.value=i;
+   option.textContent=i;
+   chapter.appendChild(option);
+ }
+ update();
+}
+
+function update(){
+ const b=books[book.value];
+ reference.textContent=
+   b[0]+" "+chapter.value+":"+verse.value;
+}
+
+function openBible(){
+ const b=books[book.value];
+ const c=chapter.value;
+ const v=Math.max(1,parseInt(verse.value)||1);
+
+ const url=
+ "https://www.die-bibel.de/bibel/LU84/"
+ +b[1]+"."+c+"."+v;
+
+ window.location.href=url;
+}
+
+book.addEventListener("change",chapters);
+chapter.addEventListener("change",update);
+verse.addEventListener("input",update);
+
+chapters();
+</script>
+
+</body>
+</html>
