@@ -2,194 +2,335 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Bibel – Meta Display</title>
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,maximum-scale=1"
+>
+
+<title>Logos Bibel</title>
+
+<!-- App-Symbol -->
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+
+<meta name="theme-color" content="#050810">
 
 <style>
-*{box-sizing:border-box}
 
-html,body{
- margin:0;
- min-height:100%;
- background:#02040a;
- color:#fff;
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  min-height:100%;
+  background:#02040a;
+  color:#ffffff;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
 
 body{
- background:#02040a;
+  background:#02040a;
 }
 
 .app{
- width:100%;
- max-width:650px;
- min-height:100vh;
- margin:auto;
- padding:18px;
- background:#070b13;
+  width:100%;
+  max-width:650px;
+  min-height:100vh;
+  margin:auto;
+  padding:18px;
+  background:#070b13;
 }
 
+
+/* =========================
+   KOPF
+========================= */
+
 header{
- text-align:center;
- margin-bottom:18px;
+  text-align:center;
+  margin-bottom:18px;
 }
 
 h1{
- margin:4px 0;
- font-size:31px;
+  margin:4px 0;
+  font-size:31px;
+  font-weight:850;
 }
 
 .subtitle{
- color:#e0e5ee;
- font-size:16px;
- font-weight:600;
+  color:#eef2f7;
+  font-size:16px;
+  font-weight:700;
 }
 
-.screen{display:none}
-.screen.active{display:block}
+
+/* =========================
+   BILDSCHIRME
+========================= */
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
 
 .screenTitle{
- text-align:center;
- font-size:24px;
- font-weight:800;
- margin:8px 0 16px;
+  text-align:center;
+  font-size:24px;
+  font-weight:850;
+  margin:8px 0 16px;
 }
 
+.selectedRef{
+  text-align:center;
+  color:#ffffff;
+  font-size:18px;
+  font-weight:750;
+  margin-bottom:15px;
+}
+
+
+/* =========================
+   GRUPPEN
+========================= */
+
 .group{
- margin:17px 0 24px;
+  margin:17px 0 24px;
 }
 
 .groupTitle{
- color:#fff;
- font-size:15px;
- font-weight:800;
- text-transform:uppercase;
- letter-spacing:1px;
- margin:0 0 9px 4px;
+  color:#ffffff;
+  font-size:15px;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin:0 0 9px 4px;
 }
+
+
+/* =========================
+   KACHELN
+========================= */
 
 .grid,
 .numberGrid{
- display:grid;
- grid-template-columns:repeat(5,1fr);
- gap:9px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px;
 }
 
 .tile{
- min-height:65px;
- border-radius:13px;
- border:3px solid #465269;
- background:#182232;
- color:#fff;
- font-size:17px;
- font-weight:800;
- padding:8px 4px;
- text-align:center;
- outline:none;
+  min-height:68px;
+
+  border-radius:13px;
+
+  border:3px solid #52627c;
+
+  background:#182232;
+
+  color:#ffffff;
+
+  font-size:17px;
+  font-weight:850;
+
+  padding:8px 4px;
+
+  text-align:center;
+
+  outline:none;
 }
 
+
+/* ausgeschriebener Buchname */
+
 .tile small{
- display:block;
- margin-top:4px;
- color:#f0f3f8;
- font-size:12px;
- line-height:1.1;
- font-weight:650;
+  display:block;
+
+  margin-top:4px;
+
+  color:#ffffff;
+
+  font-size:13px;
+
+  line-height:1.1;
+
+  font-weight:700;
 }
+
+
+/* =========================
+   FOKUS
+========================= */
 
 .tile:focus,
 .tile.focused{
- border-color:#fff;
- background:#1268ff !important;
- color:#fff;
- transform:scale(1.06);
- box-shadow:
-   0 0 0 3px #1268ff,
-   0 0 18px rgba(255,255,255,.75);
+
+  border-color:#ffffff;
+
+  background:#1268ff !important;
+
+  color:#ffffff;
+
+  transform:scale(1.06);
+
+  box-shadow:
+    0 0 0 3px #1268ff,
+    0 0 20px rgba(255,255,255,.85);
 }
 
 .tile:focus small{
- color:#fff;
+  color:#ffffff;
 }
 
-/* kräftige Buchgruppen */
 
-.moses .tile{background:#064b73}
-.history .tile{background:#07513e}
-.wisdom .tile{background:#6b5010}
-.major .tile{background:#702424}
-.minor .tile{background:#67266b}
-.gospels .tile{background:#075385}
-.acts .tile{background:#15546c}
-.paul .tile{background:#49348a}
-.general .tile{background:#543477}
-.revelation .tile{background:#7a2020}
+/* =========================
+   KRÄFTIGE FARBEN
+========================= */
 
-/* Kapitel / Verse */
+.moses .tile{
+  background:#064f7c;
+}
+
+.history .tile{
+  background:#07563f;
+}
+
+.wisdom .tile{
+  background:#72550b;
+}
+
+.major .tile{
+  background:#762525;
+}
+
+.minor .tile{
+  background:#6d2671;
+}
+
+.gospels .tile{
+  background:#07598e;
+}
+
+.acts .tile{
+  background:#155b74;
+}
+
+.paul .tile{
+  background:#503991;
+}
+
+.general .tile{
+  background:#5a377e;
+}
+
+.revelation .tile{
+  background:#812020;
+}
+
+
+/* =========================
+   ZAHLEN
+========================= */
 
 .numberTile{
- min-height:67px;
- font-size:24px;
- background:#162238;
+  min-height:68px;
+  font-size:24px;
+  background:#16243b;
 }
 
-/* echte Zurück-Kachel */
+
+/* =========================
+   ZURÜCK
+========================= */
 
 .backTile{
- grid-column:1 / -1;
- min-height:58px;
- background:#39465b !important;
- border-color:#dce4ef;
- font-size:19px;
- margin-bottom:5px;
+
+  grid-column:1 / -1;
+
+  min-height:60px;
+
+  background:#39485e !important;
+
+  border-color:#e5ebf4;
+
+  font-size:19px;
+
+  margin-bottom:5px;
 }
 
 .backTile:focus{
- background:#1268ff !important;
+  background:#1268ff !important;
 }
 
-/* ausgewählte Referenz */
 
-.selectedRef{
- text-align:center;
- color:#fff;
- font-size:18px;
- font-weight:700;
- margin-bottom:15px;
-}
+/* =========================
+   HINWEIS
+========================= */
 
 .hint{
- text-align:center;
- color:#d0d7e2;
- font-size:14px;
- font-weight:600;
- margin:20px 0 10px;
+  text-align:center;
+  color:#d8dee8;
+  font-size:14px;
+  font-weight:650;
+  margin:20px 0 10px;
 }
 
+
+/* Auf der Brille 5 Spalten.
+   Nur auf sehr schmalen Handys 4. */
+
 @media(max-width:420px){
- .grid,.numberGrid{
-   grid-template-columns:repeat(4,1fr);
- }
+
+  .grid,
+  .numberGrid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="app">
 
+
 <header>
+
 <h1>📖 Bibel</h1>
-<div class="subtitle">Lutherbibel 1984</div>
+
+<div class="subtitle">
+Lutherbibel 1984
+</div>
+
 </header>
 
 
-<!-- ================= BÜCHER ================= -->
 
-<section id="booksScreen" class="screen active">
+<!-- =========================
+     BÜCHER
+========================= -->
 
-<div class="screenTitle">Buch auswählen</div>
+<section
+  id="booksScreen"
+  class="screen active"
+>
+
+<div class="screenTitle">
+Buch auswählen
+</div>
 
 <div id="bookGroups"></div>
 
@@ -200,44 +341,75 @@ Navigieren • Pinch zum Auswählen
 </section>
 
 
-<!-- ================= KAPITEL ================= -->
 
-<section id="chaptersScreen" class="screen">
+<!-- =========================
+     KAPITEL
+========================= -->
 
-<div class="screenTitle" id="chapterHeading">
+<section
+  id="chaptersScreen"
+  class="screen"
+>
+
+<div
+  class="screenTitle"
+  id="chapterHeading"
+>
 Kapitel auswählen
 </div>
 
-<div class="selectedRef" id="selectedBookName"></div>
+<div
+  class="selectedRef"
+  id="selectedBookName"
+></div>
 
-<div id="chapterGrid" class="numberGrid"></div>
+<div
+  id="chapterGrid"
+  class="numberGrid"
+></div>
 
 </section>
 
 
-<!-- ================= VERSE ================= -->
 
-<section id="versesScreen" class="screen">
+<!-- =========================
+     VERSE
+========================= -->
 
-<div class="screenTitle" id="verseHeading">
+<section
+  id="versesScreen"
+  class="screen"
+>
+
+<div
+  class="screenTitle"
+  id="verseHeading"
+>
 Vers auswählen
 </div>
 
-<div class="selectedRef" id="selectedChapterName"></div>
+<div
+  class="selectedRef"
+  id="selectedChapterName"
+></div>
 
-<div id="verseGrid" class="numberGrid"></div>
+<div
+  id="verseGrid"
+  class="numberGrid"
+></div>
 
 </section>
 
+
 </div>
+
 
 
 <script>
 
-/* ===================================================
+/* ==================================================
    66 BÜCHER
-   Reihenfolge wie in der Bibel
-=================================================== */
+================================================== */
 
 const groups=[
 
@@ -245,57 +417,70 @@ const groups=[
 title:"5 Bücher Mose",
 cls:"moses",
 books:[
+
 ["Gen","Genesis","GEN",50],
 ["Ex","Exodus","EXO",40],
 ["Lev","Levitikus","LEV",27],
 ["Num","Numeri","NUM",36],
 ["Dtn","Deuteronomium","DEU",34]
+
 ]},
 
 {
 title:"Geschichtsbücher",
 cls:"history",
 books:[
+
 ["Jos","Josua","JOS",24],
 ["Ri","Richter","JDG",21],
 ["Rut","Rut","RUT",4],
+
 ["1 Sam","1. Samuel","1SA",31],
 ["2 Sam","2. Samuel","2SA",24],
+
 ["1 Kön","1. Könige","1KI",22],
 ["2 Kön","2. Könige","2KI",25],
+
 ["1 Chr","1. Chronik","1CH",29],
 ["2 Chr","2. Chronik","2CH",36],
+
 ["Esra","Esra","EZR",10],
 ["Neh","Nehemia","NEH",13],
 ["Est","Ester","EST",10]
+
 ]},
 
 {
 title:"Dichtung & Weisheit",
 cls:"wisdom",
 books:[
+
 ["Hi","Hiob","JOB",42],
 ["Ps","Psalmen","PSA",150],
 ["Spr","Sprüche","PRO",31],
 ["Pred","Prediger","ECC",12],
 ["Hld","Hohelied","SNG",8]
+
 ]},
 
 {
 title:"Große Propheten",
 cls:"major",
 books:[
+
 ["Jes","Jesaja","ISA",66],
 ["Jer","Jeremia","JER",52],
 ["Klgl","Klagelieder","LAM",5],
 ["Hes","Hesekiel","EZK",48],
 ["Dan","Daniel","DAN",12]
+
 ]},
 
 {
 title:"12 kleine Propheten",
 cls:"minor",
 books:[
+
 ["Hos","Hosea","HOS",14],
 ["Joel","Joel","JOL",4],
 ["Am","Amos","AMO",9],
@@ -308,555 +493,988 @@ books:[
 ["Hag","Haggai","HAG",2],
 ["Sach","Sacharja","ZEC",14],
 ["Mal","Maleachi","MAL",3]
+
 ]},
 
 {
 title:"Evangelien",
 cls:"gospels",
 books:[
+
 ["Mt","Matthäus","MAT",28],
 ["Mk","Markus","MRK",16],
 ["Lk","Lukas","LUK",24],
 ["Joh","Johannes","JHN",21]
+
 ]},
 
 {
 title:"Apostelgeschichte",
 cls:"acts",
 books:[
+
 ["Apg","Apostelgeschichte","ACT",28]
+
 ]},
 
 {
 title:"Paulusbriefe",
 cls:"paul",
 books:[
+
 ["Röm","Römer","ROM",16],
+
 ["1 Kor","1. Korinther","1CO",16],
 ["2 Kor","2. Korinther","2CO",13],
+
 ["Gal","Galater","GAL",6],
 ["Eph","Epheser","EPH",6],
 ["Phil","Philipper","PHP",4],
 ["Kol","Kolosser","COL",4],
+
 ["1 Thess","1. Thessalonicher","1TH",5],
 ["2 Thess","2. Thessalonicher","2TH",3],
+
 ["1 Tim","1. Timotheus","1TI",6],
 ["2 Tim","2. Timotheus","2TI",4],
+
 ["Tit","Titus","TIT",3],
 ["Phlm","Philemon","PHM",1]
+
 ]},
 
 {
 title:"Weitere Briefe",
 cls:"general",
 books:[
+
 ["Hebr","Hebräer","HEB",13],
 ["Jak","Jakobus","JAS",5],
+
 ["1 Petr","1. Petrus","1PE",5],
 ["2 Petr","2. Petrus","2PE",3],
+
 ["1 Joh","1. Johannes","1JN",5],
 ["2 Joh","2. Johannes","2JN",1],
 ["3 Joh","3. Johannes","3JN",1],
+
 ["Jud","Judas","JUD",1]
+
 ]},
 
 {
 title:"Prophetie",
 cls:"revelation",
 books:[
+
 ["Offb","Offenbarung","REV",22]
+
 ]}
 
 ];
 
 
-/* ===================================================
+
+/* ==================================================
    VERSZAHLEN
-   Bereits exakt hinterlegte Testbücher
-=================================================== */
+
+   Für die Bücher, deren genaue Verszählung
+   bereits hinterlegt ist.
+
+   Andere Bücher verwenden vorläufig 60,
+   damit die Navigation funktioniert.
+================================================== */
 
 const verseCounts={
 
+
 GEN:[
+
 31,25,24,26,32,22,24,22,29,32,
 32,20,18,24,21,16,27,33,38,18,
 34,24,20,67,34,35,46,22,35,43,
 55,32,20,31,29,43,36,30,23,23,
 57,38,34,34,28,34,31,22,33,26
+
 ],
 
+
 EXO:[
+
 22,25,22,31,23,30,29,28,35,29,
 10,51,22,31,27,36,16,27,25,26,
 37,30,33,18,40,37,21,43,46,38,
 18,35,23,35,35,38,29,31,43,38
+
 ],
 
+
 LEV:[
+
 17,16,17,35,19,30,38,36,24,
 20,47,8,59,57,33,34,16,30,
 37,27,24,33,44,23,55,46,34
+
 ],
 
+
 NUM:[
+
 54,34,51,49,31,27,89,26,23,
 36,35,16,33,45,41,35,28,32,
 22,29,35,41,30,25,18,65,23,
 31,40,16,54,42,56,29,34,13
+
 ],
 
+
 DEU:[
+
 46,37,29,49,33,25,26,20,29,
 22,32,32,18,29,23,22,20,22,
 21,20,23,30,25,22,19,19,26,
 69,28,20,30,52,29,12
+
 ],
+
 
 JHN:[
+
 51,25,36,54,47,71,53,59,41,42,
 57,50,38,31,27,33,26,40,42,31,25
+
 ],
 
+
 REV:[
+
 20,29,22,11,14,17,17,13,21,11,
 19,17,18,20,8,21,18,24,21,15,27,21
+
 ]
 
 };
 
 
-/* Für noch nicht hinterlegte Bücher nur Test-Fallback */
 
 function getVerseCount(code,chapter){
 
-if(
- verseCounts[code] &&
- verseCounts[code][chapter-1]
-){
- return verseCounts[code][chapter-1];
+  if(
+    verseCounts[code] &&
+    verseCounts[code][chapter-1]
+  ){
+
+    return verseCounts[code][chapter-1];
+
+  }
+
+  /*
+    Noch nicht hinterlegte Bücher.
+
+    Diese 60 ist nur eine Sicherheitsgrenze
+    für die Auswahl und wird später durch
+    die vollständige LU84-Verszählung ersetzt.
+  */
+
+  return 60;
+
 }
 
-return 60;
-}
 
 
-/* ===================================================
+/* ==================================================
    STATUS
-=================================================== */
+================================================== */
 
 let currentScreen="books";
+
 let selectedBook=null;
+
 let selectedChapter=1;
 
 
-/* ===================================================
-   BILDSCHIRM
-=================================================== */
+
+/* ==================================================
+   BILDSCHIRM WECHSELN
+================================================== */
 
 function showOnly(id){
 
-document.querySelectorAll(".screen")
-.forEach(s=>s.classList.remove("active"));
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen=>{
 
-document.getElementById(id)
-.classList.add("active");
+      screen.classList.remove("active");
 
-window.scrollTo(0,0);
+    });
 
-setTimeout(focusFirst,60);
+
+  document
+    .getElementById(id)
+    .classList
+    .add("active");
+
+
+  window.scrollTo(0,0);
+
+
+  setTimeout(
+    focusFirst,
+    60
+  );
+
 }
 
 
-/* ===================================================
-   BÜCHER
-=================================================== */
+
+/* ==================================================
+   BÜCHER AUFBAUEN
+================================================== */
 
 function buildBooks(){
 
-const root=document.getElementById("bookGroups");
+  const root=
+    document.getElementById(
+      "bookGroups"
+    );
 
-root.innerHTML="";
 
-groups.forEach(group=>{
+  root.innerHTML="";
 
- const section=document.createElement("div");
- section.className="group "+group.cls;
 
- const title=document.createElement("div");
- title.className="groupTitle";
- title.textContent=group.title;
+  groups.forEach(group=>{
 
- const grid=document.createElement("div");
- grid.className="grid";
 
- group.books.forEach(book=>{
+    const section=
+      document.createElement("div");
 
-   const btn=document.createElement("button");
 
-   btn.className="tile navItem";
+    section.className=
+      "group "+group.cls;
 
-   btn.innerHTML=
-   book[0]+
-   "<small>"+book[1]+"</small>";
 
-   btn.onclick=()=>selectBook(book);
+    const title=
+      document.createElement("div");
 
-   grid.appendChild(btn);
 
- });
+    title.className=
+      "groupTitle";
 
- section.appendChild(title);
- section.appendChild(grid);
 
- root.appendChild(section);
+    title.textContent=
+      group.title;
 
-});
 
-setTimeout(focusFirst,60);
+    const grid=
+      document.createElement("div");
+
+
+    grid.className="grid";
+
+
+    group.books.forEach(book=>{
+
+
+      const btn=
+        document.createElement("button");
+
+
+      btn.className=
+        "tile navItem";
+
+
+      btn.innerHTML=
+        book[0]+
+        "<small>"+
+        book[1]+
+        "</small>";
+
+
+      btn.onclick=()=>{
+
+        selectBook(book);
+
+      };
+
+
+      grid.appendChild(btn);
+
+
+    });
+
+
+    section.appendChild(title);
+
+    section.appendChild(grid);
+
+    root.appendChild(section);
+
+
+  });
+
+
+  setTimeout(
+    focusFirst,
+    60
+  );
 
 }
 
 
-/* ===================================================
+
+/* ==================================================
    BUCH AUSWÄHLEN
-=================================================== */
+================================================== */
 
 function selectBook(book){
 
-selectedBook={
- short:book[0],
- name:book[1],
- code:book[2],
- chapters:book[3]
-};
 
-document.getElementById("chapterHeading")
-.textContent=selectedBook.name;
+  selectedBook={
 
-document.getElementById("selectedBookName")
-.textContent="Kapitel auswählen";
+    short:book[0],
 
-buildChapters();
+    name:book[1],
 
-currentScreen="chapters";
+    code:book[2],
 
-showOnly("chaptersScreen");
+    chapters:book[3]
+
+  };
+
+
+  document
+    .getElementById(
+      "chapterHeading"
+    )
+    .textContent=
+      selectedBook.name;
+
+
+  document
+    .getElementById(
+      "selectedBookName"
+    )
+    .textContent=
+      "Kapitel auswählen";
+
+
+  buildChapters();
+
+
+  currentScreen=
+    "chapters";
+
+
+  showOnly(
+    "chaptersScreen"
+  );
 
 }
 
 
-/* ===================================================
-   KAPITEL
-=================================================== */
+
+/* ==================================================
+   KAPITEL AUFBAUEN
+================================================== */
 
 function buildChapters(){
 
-const grid=document.getElementById("chapterGrid");
 
-grid.innerHTML="";
-
-
-/* ZURÜCK-KACHEL */
-
-const back=document.createElement("button");
-
-back.className="tile backTile navItem";
-
-back.textContent="← Bücher";
-
-back.onclick=()=>showBooks();
-
-grid.appendChild(back);
+  const grid=
+    document.getElementById(
+      "chapterGrid"
+    );
 
 
-/* KAPITEL */
+  grid.innerHTML="";
 
-for(let i=1;i<=selectedBook.chapters;i++){
 
- const chapter=i;
+  /* ZURÜCK ZU BÜCHERN */
 
- const btn=document.createElement("button");
+  const back=
+    document.createElement(
+      "button"
+    );
 
- btn.className="tile numberTile navItem";
 
- btn.textContent=chapter;
+  back.className=
+    "tile backTile navItem";
 
- btn.onclick=()=>selectChapter(chapter);
 
- grid.appendChild(btn);
+  back.textContent=
+    "← Bücher";
+
+
+  back.onclick=()=>{
+
+    showBooks();
+
+  };
+
+
+  grid.appendChild(back);
+
+
+
+  /* KAPITEL */
+
+  for(
+    let i=1;
+    i<=selectedBook.chapters;
+    i++
+  ){
+
+
+    const chapter=i;
+
+
+    const btn=
+      document.createElement(
+        "button"
+      );
+
+
+    btn.className=
+      "tile numberTile navItem";
+
+
+    btn.textContent=
+      chapter;
+
+
+    btn.onclick=()=>{
+
+      selectChapter(
+        chapter
+      );
+
+    };
+
+
+    grid.appendChild(btn);
+
+  }
 
 }
 
-}
 
+
+/* ==================================================
+   KAPITEL AUSWÄHLEN
+================================================== */
 
 function selectChapter(chapter){
 
-selectedChapter=chapter;
 
-document.getElementById("verseHeading")
-.textContent=
-selectedBook.name+" "+chapter;
+  selectedChapter=
+    chapter;
 
-document.getElementById("selectedChapterName")
-.textContent="Vers auswählen";
 
-buildVerses();
+  document
+    .getElementById(
+      "verseHeading"
+    )
+    .textContent=
 
-currentScreen="verses";
+      selectedBook.name+
+      " "+
+      chapter;
 
-showOnly("versesScreen");
+
+  document
+    .getElementById(
+      "selectedChapterName"
+    )
+    .textContent=
+      "Vers auswählen";
+
+
+  buildVerses();
+
+
+  currentScreen=
+    "verses";
+
+
+  showOnly(
+    "versesScreen"
+  );
 
 }
 
 
-/* ===================================================
-   VERSE
-=================================================== */
+
+/* ==================================================
+   VERSE AUFBAUEN
+================================================== */
 
 function buildVerses(){
 
-const grid=document.getElementById("verseGrid");
 
-grid.innerHTML="";
-
-
-/* ZURÜCK-KACHEL */
-
-const back=document.createElement("button");
-
-back.className="tile backTile navItem";
-
-back.textContent="← Kapitel";
-
-back.onclick=()=>showChapters();
-
-grid.appendChild(back);
+  const grid=
+    document.getElementById(
+      "verseGrid"
+    );
 
 
-/* VERSE */
+  grid.innerHTML="";
 
-const count=
-getVerseCount(
- selectedBook.code,
- selectedChapter
-);
 
-for(let i=1;i<=count;i++){
+  /* ZURÜCK ZU KAPITEL */
 
- const verse=i;
+  const back=
+    document.createElement(
+      "button"
+    );
 
- const btn=document.createElement("button");
 
- btn.className="tile numberTile navItem";
+  back.className=
+    "tile backTile navItem";
 
- btn.textContent=verse;
 
- btn.onclick=()=>openVerse(verse);
+  back.textContent=
+    "← Kapitel";
 
- grid.appendChild(btn);
+
+  back.onclick=()=>{
+
+    showChapters();
+
+  };
+
+
+  grid.appendChild(back);
+
+
+
+  const count=
+    getVerseCount(
+
+      selectedBook.code,
+
+      selectedChapter
+
+    );
+
+
+
+  for(
+    let i=1;
+    i<=count;
+    i++
+  ){
+
+
+    const verse=i;
+
+
+    const btn=
+      document.createElement(
+        "button"
+      );
+
+
+    btn.className=
+      "tile numberTile navItem";
+
+
+    btn.textContent=
+      verse;
+
+
+    btn.onclick=()=>{
+
+      openVerse(
+        verse
+      );
+
+    };
+
+
+    grid.appendChild(btn);
+
+  }
 
 }
 
-}
 
 
-/* ===================================================
+/* ==================================================
    ZURÜCK
-=================================================== */
+================================================== */
 
 function showBooks(){
 
-currentScreen="books";
 
-showOnly("booksScreen");
+  currentScreen=
+    "books";
+
+
+  showOnly(
+    "booksScreen"
+  );
 
 }
+
 
 
 function showChapters(){
 
-currentScreen="chapters";
 
-showOnly("chaptersScreen");
+  currentScreen=
+    "chapters";
+
+
+  showOnly(
+    "chaptersScreen"
+  );
 
 }
 
 
-/* ===================================================
-   BIBELSTELLE ÖFFNEN
-=================================================== */
+
+/* ==================================================
+   LU84 – AUSGEWÄHLTEN VERS ÖFFNEN
+
+   Beispiel:
+
+   Johannes 3,16
+
+   JHN.3.16
+================================================== */
 
 function openVerse(verse){
 
-const url=
-"https://www.die-bibel.de/bibel/LU84/"
-+selectedBook.code+"."
-+selectedChapter+"/"
-+selectedBook.name.replaceAll(" ","-")
-+"-"+selectedChapter
-+"#v"+verse;
 
-window.location.assign(url);
+  const url=
+
+    "https://www.die-bibel.de/bibel/LU84/"
+
+    +selectedBook.code
+
+    +"."
+
+    +selectedChapter
+
+    +"."
+
+    +verse;
+
+
+  window.location.href=
+    url;
 
 }
 
 
-/* ===================================================
-   FOKUS
-=================================================== */
+
+/* ==================================================
+   SICHTBARE KACHELN
+================================================== */
 
 function visibleItems(){
 
-return [
- ...document.querySelectorAll(
- ".screen.active .navItem"
- )
-];
+
+  return [
+
+    ...document.querySelectorAll(
+
+      ".screen.active .navItem"
+
+    )
+
+  ];
 
 }
 
+
+
+/* ==================================================
+   ERSTE KACHEL FOKUSSIEREN
+================================================== */
 
 function focusFirst(){
 
-const items=visibleItems();
 
-if(!items.length)return;
+  const items=
+    visibleItems();
 
-items[0].focus();
 
-items[0].scrollIntoView({
- block:"center",
- inline:"center"
-});
+  if(
+    !items.length
+  ){
+    return;
+  }
+
+
+  items[0].focus();
+
+
+  items[0].scrollIntoView({
+
+    block:"center",
+
+    inline:"center"
+
+  });
 
 }
 
 
-/* ===================================================
+
+/* ==================================================
    NAVIGATION
-=================================================== */
+================================================== */
+
+function getColumnCount(){
+
+
+  const grid=
+    document.querySelector(
+
+      ".screen.active .grid, "+
+      ".screen.active .numberGrid"
+
+    );
+
+
+  if(!grid){
+
+    return 5;
+
+  }
+
+
+  const style=
+    window.getComputedStyle(
+      grid
+    );
+
+
+  const columns=
+    style
+      .gridTemplateColumns
+      .split(" ")
+      .length;
+
+
+  return columns || 5;
+
+}
+
+
 
 function moveFocus(direction){
 
-const items=visibleItems();
 
-if(!items.length)return;
-
-let index=
-items.indexOf(document.activeElement);
-
-if(index<0)index=0;
+  const items=
+    visibleItems();
 
 
-/*
-  Die Zurück-Kachel nimmt eine ganze Zeile ein.
-  Browser/Meta übernimmt grundsätzlich den Fokus.
-  Diese Logik dient zusätzlich als Fallback.
-*/
-
-const columns=5;
-
-if(direction==="left")
- index=Math.max(0,index-1);
-
-if(direction==="right")
- index=Math.min(
-   items.length-1,
-   index+1
- );
-
-if(direction==="up")
- index=Math.max(
-   0,
-   index-columns
- );
-
-if(direction==="down")
- index=Math.min(
-   items.length-1,
-   index+columns
- );
+  if(
+    !items.length
+  ){
+    return;
+  }
 
 
-items[index].focus();
-
-items[index].scrollIntoView({
- behavior:"smooth",
- block:"center",
- inline:"center"
-});
-
-}
+  let index=
+    items.indexOf(
+      document.activeElement
+    );
 
 
-/* ===================================================
-   DISPLAY-EINGABEN
+  if(
+    index<0
+  ){
 
-   WICHTIG:
-   KEIN Escape
-   KEIN Backspace
-   KEINE Mittelfinger-Geste
+    index=0;
 
-   Nur Navigation + Bestätigen.
-=================================================== */
+  }
 
-document.addEventListener("keydown",e=>{
 
-if(e.key==="ArrowLeft"){
+  const columns=
+    getColumnCount();
 
- e.preventDefault();
 
- moveFocus("left");
+  if(
+    direction==="left"
+  ){
 
-}
+    index=
+      Math.max(
+        0,
+        index-1
+      );
 
-else if(e.key==="ArrowRight"){
+  }
 
- e.preventDefault();
 
- moveFocus("right");
+  if(
+    direction==="right"
+  ){
 
-}
+    index=
+      Math.min(
+        items.length-1,
+        index+1
+      );
 
-else if(e.key==="ArrowUp"){
+  }
 
- e.preventDefault();
 
- moveFocus("up");
+  if(
+    direction==="up"
+  ){
 
-}
+    index=
+      Math.max(
+        0,
+        index-columns
+      );
 
-else if(e.key==="ArrowDown"){
+  }
 
- e.preventDefault();
 
- moveFocus("down");
+  if(
+    direction==="down"
+  ){
 
-}
+    index=
+      Math.min(
+        items.length-1,
+        index+columns
+      );
 
-else if(e.key==="Enter"){
+  }
 
- e.preventDefault();
 
- const active=
- document.activeElement;
+  items[index].focus();
 
- if(
-   active &&
-   active.classList.contains("navItem")
- ){
-   active.click();
- }
+
+  items[index].scrollIntoView({
+
+    behavior:"smooth",
+
+    block:"center",
+
+    inline:"center"
+
+  });
 
 }
 
-});
 
 
-/* ===================================================
+/* ==================================================
+   META DISPLAY / TASTATUR-EINGABEN
+
+   Nur:
+
+   LINKS
+   RECHTS
+   HOCH
+   RUNTER
+   ENTER
+
+   KEIN ESCAPE.
+   KEIN BACKSPACE.
+   KEINE MITTELFINGER-GESTE.
+================================================== */
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+
+    if(
+      e.key==="ArrowLeft"
+    ){
+
+      e.preventDefault();
+
+      moveFocus(
+        "left"
+      );
+
+    }
+
+
+    else if(
+      e.key==="ArrowRight"
+    ){
+
+      e.preventDefault();
+
+      moveFocus(
+        "right"
+      );
+
+    }
+
+
+    else if(
+      e.key==="ArrowUp"
+    ){
+
+      e.preventDefault();
+
+      moveFocus(
+        "up"
+      );
+
+    }
+
+
+    else if(
+      e.key==="ArrowDown"
+    ){
+
+      e.preventDefault();
+
+      moveFocus(
+        "down"
+      );
+
+    }
+
+
+    else if(
+      e.key==="Enter"
+    ){
+
+      e.preventDefault();
+
+
+      const active=
+        document.activeElement;
+
+
+      if(
+
+        active &&
+
+        active.classList.contains(
+          "navItem"
+        )
+
+      ){
+
+        active.click();
+
+      }
+
+    }
+
+  }
+
+);
+
+
+
+/* ==================================================
    START
-=================================================== */
+================================================== */
 
 buildBooks();
 
